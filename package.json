@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "canvas": "^2.8.0",
+    "merge-images": "^2.0.0"
+  }
+}
