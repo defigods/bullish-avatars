@@ -7,9 +7,6 @@ const data = require("./data.json");
 const config = data[0];
 const attrCounts = [];
 const attrIds = [];
-const bodyMustClothes = [
-  4, 7, 8, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 34, 36, 37, 38,
-];
 
 let id = 1;
 data.forEach((attrs, type) => {
@@ -66,7 +63,7 @@ const checkValidation = (indexes) => {
   });
 
   // head = body, if bodyMust showing
-  if (bodyMustClothes.includes(result[2]) || result[2] === 0)
+  if (config.bodyMustClothes.includes(result[2]) || result[2] === 0)
     result[1] = result[3];
   else result[1] = 0;
 
