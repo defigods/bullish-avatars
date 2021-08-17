@@ -4,8 +4,11 @@ const data = require("./data.json");
 let id = 0;
 data.forEach((attrs, type) => {
   if (type === 0) return;
-  attrs.forEach((value) => {
+  attrs.forEach(async (value) => {
     id++;
-    axios.post("http://localhost:5000/api/attrs/", { id, type, value });
+    axios
+      .post("https://bullishbears.io/api/attrs/", { id, type, value })
+      .then((r) => console.log(r.data.message))
+      .catch((e) => console.error(e.message));
   });
 });
