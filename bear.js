@@ -1,5 +1,4 @@
 const fs = require("fs");
-const axios = require("axios");
 const mergeImages = require("merge-images");
 const { Canvas, Image } = require("canvas");
 const data = require("./data.json");
@@ -50,19 +49,12 @@ const buildBear = (indexes) => {
     .filter((x) => x !== "");
 
   const tokenId = totalCount++;
-  // axios.post("http://localhost:5000/api/tokens/", {
-  //   tokenId,
-  //   name: "Bullish Bear " + tokenId,
-  //   description: "They are bullish. Also, they pay dividends.",
-  //   attrs,
-  // });
   mergeImages(params, { Canvas, Image }).then((base64) =>
     saveBase64ToFile(base64, tokenId)
   );
 };
 
 const generate = () => {
-  const time = new Date().getTime();
   const text = fs.readFileSync("array.txt").toString("utf-8");
   text
     .split("\n")
@@ -71,7 +63,6 @@ const generate = () => {
       async (indexes) =>
         await buildBear(indexes.split(":").map((x) => parseInt(x)))
     );
-  console.log(new Date().getTime() - time);
 };
 
 generate();
